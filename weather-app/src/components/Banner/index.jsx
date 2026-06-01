@@ -1,18 +1,52 @@
 import './index.scss';
 
 
-export function Banner(){
+export function Banner({city, country, date, temperature, condition}){
+
+    let weatherURLIcon;
+
+    switch(condition){
+        case 'sunny':
+            weatherURLIcon = "icon-sunny.webp";
+            break;
+
+        case 'cloudy':
+            weatherURLIcon = "icon-cloudy.webp";
+            break;
+
+        case 'rainy':
+            weatherURLIcon = "icon-rainy.webp";
+            break;
+
+        case 'snowy':
+            weatherURLIcon = "icon-snowy.webp";
+            break;
+        case 'stormy':
+            weatherURLIcon = "icon-stormy.webp";
+            break;
+
+        case 'foggy':
+            weatherURLIcon = "icon-foggy.webp";
+            break;
+
+        case 'drizzle':
+            weatherURLIcon = "icon-drizzle.webp";
+            break;
+        default:
+            weatherURLIcon = "icon-sunny.webp";
+    }
 
     return (
         <div className="banner">
             <div className="banner__location-infos">
-                <p className="city">Berlin, Germany</p>
-                <p className="date">Monday, October 2, 2026</p>
+                <p className="city">{city}, {country}</p>
+                <p className="date">{date}</p>
             </div>
 
             <div className="banner__location-weather">
-                <img src="icon-sunny.webp" alt="clima" className="weather-icon" />
-                <h2 className="temperature">20°</h2>
+               
+                  <img src={weatherURLIcon} alt="clima" className="weather-icon" /> 
+                <h2 className="temperature">{temperature}°</h2>
             </div>
         </div>
     )

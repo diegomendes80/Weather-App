@@ -1,0 +1,55 @@
+@use '../../abstract/var';
+
+
+.container{
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
+    width: 100%;
+
+    div{
+        background-color: var.$neutral-800;
+        width: 180px;
+        padding: .5rem;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: left;
+        gap:.5rem;
+
+        p{
+            margin:0;
+            color: var.$neutral-300;
+
+            &:nth-child(2){
+                font-size: 20px;
+                font-weight: 500;
+                color: var.$neutral-200;
+
+            }
+        }
+
+    }
+}
+
+@media (max-width:1000px){
+    .container{
+        flex-wrap: wrap;
+        gap: .5rem;
+
+        div{
+            width: calc(50% - 0.5rem);
+            padding:1rem;
+            height: 100px;
+            gap: 1rem; 
+            
+            
+        p{
+            &:nth-child(2){
+                font-size: 28px;
+                font-weight: 400;
+            }
+        }
+    }
+}
+}

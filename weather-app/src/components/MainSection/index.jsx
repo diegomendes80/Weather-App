@@ -1,10 +1,12 @@
 import './index.scss';
 import {ResultsSection} from '../ResultsSection';
+import {Parameter} from '../Parameter';
 
-export function MainSection(){
+export function MainSection({data}){
     return(
         <section className="main-section">
-            <ResultsSection></ResultsSection>
+            <ResultsSection data={data}/>
+            
         </section>
     )
 }

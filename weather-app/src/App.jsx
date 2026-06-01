@@ -5,6 +5,7 @@ import './app.scss';
 import './abstract/_root.scss';
 import {Header} from './components/Header';
 import { SearchSection } from './components/SearchSection';
+import { MainSection } from './components/MainSection';
 
 function App() {
   
@@ -14,6 +15,7 @@ function App() {
 
       <Header></Header>
       <SearchSection></SearchSection>
+      <MainSection></MainSection>
 
     </>
   )

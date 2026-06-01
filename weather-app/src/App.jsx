@@ -9,6 +9,16 @@ import { MainSection } from './components/MainSection';
 
 function App() {
   
+  const PreviousData = [
+    { day: 'Mon', condition: 'sunny',   temperature: 28, feels: 26 },
+    { day: 'Tue', condition: 'cloudy',  temperature: 22, feels: 20 },
+    { day: 'Wed', condition: 'rainy',   temperature: 18, feels: 15 },
+    { day: 'Thu', condition: 'stormy',  temperature: 15, feels: 12 },
+    { day: 'Fri', condition: 'drizzle', temperature: 19, feels: 17 },
+    { day: 'Sat', condition: 'foggy',   temperature: 21, feels: 19 },
+    { day: 'Sun', condition: 'snowy',   temperature: 3,  feels: -1 },
+];
+
   const data = {
     city: 'São Paulo',
     country: 'Brasil',
@@ -27,7 +37,7 @@ function App() {
 
       <Header></Header>
       <SearchSection></SearchSection>
-      <MainSection data={data}/>
+      <MainSection data={data} previousData={PreviousData}/>
 
     </>
   )

@@ -1,0 +1,30 @@
+@use '../../abstract/var';
+
+
+.search-section{
+    
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom:2rem;
+
+    div{
+        display: flex;
+        gap: 1rem;
+
+        h1{
+            font-family: var.$font-heading;
+        }
+
+        .search-btn{
+            padding:.5rem 2rem;
+            background-color: var.$blue-500;
+            border:none;
+            border-radius: 8px;
+            color: var.$neutral-0;
+        }
+    }
+}

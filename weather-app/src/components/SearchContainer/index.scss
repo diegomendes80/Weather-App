@@ -1,0 +1,33 @@
+@use '../../abstract/var';
+
+
+.search-container{
+    position:relative;
+    width:400px;
+
+
+    .search-input{
+        width:100%;
+        padding: 14px 14px 14px 45px;
+        background-color: var.$neutral-800;
+        border:none;
+        border-radius: 8px;
+        color: var.$neutral-0;
+        outline:none;
+
+        &::placeholder{
+            color: var.$neutral-300;
+        }
+    }
+
+    .search-icon{
+        position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 18px; 
+            height: 18px;
+            pointer-events: none;
+    }
+
+}

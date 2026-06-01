@@ -1,0 +1,10 @@
+@use './abstract/var';
+@use './abstract/root';
+
+
+body{
+  background-color: var.$neutral-900;
+  color: var.$neutral-0;
+  font-size: 18px;
+  font-family: var.$font-primary;
+}

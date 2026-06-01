@@ -1,5 +1,6 @@
 import './index.scss';
 import { SearchContainer } from '../SearchContainer';
+import '../../abstract/_root.scss';
 
 export function SearchSection() {
   return (

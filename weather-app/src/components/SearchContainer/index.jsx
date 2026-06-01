@@ -1,4 +1,6 @@
 import './index.scss';
+import '../../abstract/_root.scss';
+
 
 export function SearchContainer() {
 

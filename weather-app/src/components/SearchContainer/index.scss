@@ -17,6 +17,8 @@
 
         &::placeholder{
             color: var.$neutral-300;
+            font-family:var.$font-primary;
+
         }
     }
 
@@ -30,4 +32,15 @@
             pointer-events: none;
     }
 
+}
+
+
+@media(max-width:1000px){
+    .search-container{
+       width: 100%;
+
+       .search-input{
+        padding: 20px 20px 20px 45px;
+       }
+    }
 }

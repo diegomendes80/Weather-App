@@ -1,5 +1,6 @@
 import {MenuDrop} from '../MenuDrop';
 import './index.scss';
+import '../../abstract/_root.scss';
 
 export function Header() {
 

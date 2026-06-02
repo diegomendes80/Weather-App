@@ -33,6 +33,11 @@
             color: var.$neutral-0;
             font-family:var.$font-primary;
             font-weight: 500;
+
+            &:hover{
+                cursor: pointer;
+                background-color: var.$blue-700;
+            }
         }
     }
 }

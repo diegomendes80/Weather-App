@@ -1,0 +1,74 @@
+@use '../../abstract/var';
+
+.hourly-section{
+    width: 35%;
+    background-color: var.$neutral-800;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    font-family: var.$font-primary;
+
+    .hourly-header{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+
+        p{
+            font-weight: 500;
+        }
+
+        select{
+            background-color: var.$neutral-700;
+            color:var.$neutral-0;
+            border-radius:8px;
+            border:none;
+            cursor: pointer;
+            outline: none;
+            appearance: none;
+             -webkit-appearance: none;
+            -moz-appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='white' viewBox='0 0 16 16'%3E%3Cpath d='M4.646 6.646a.5.5 0 0 1 .708 0L8 9.293l2.646-2.647a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 0 1 0-.708'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+            padding: .5rem;
+            padding-right: 2.5rem;
+        }
+    }
+
+    .hour-container{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: .8rem;
+
+        .hour-card{
+            background-color: var.$neutral-700;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            padding:0 .5rem;
+            gap:.5rem;
+            img{
+                width: 40px;
+            }
+
+            p{
+                &:nth-child(3){
+                    margin-left: auto;
+                    color:var.$neutral-200;
+
+                }
+            }
+        }
+    }
+}
+
+
+
+@media(max-width:1000px){
+    .hourly-section{
+        width: 100%;
+    }
+}

@@ -6,8 +6,60 @@ import './abstract/_root.scss';
 import {Header} from './components/Header';
 import { SearchSection } from './components/SearchSection';
 import { MainSection } from './components/MainSection';
+import { getDailyWeatherData, getWeatherData, searchCity } from './services/weatherAPI';
 
 function App() {
+  
+    //declaro um usestate que será reponsável por guardar o estado dos dados de clima
+    const [weatherData, setWeatherData] = useState(null);
+    const [dailyWeatherData, setDailyWeatherData] = useState(null);
+
+    //uma função assincrona que usaraá as funções da API pra pegar e formatar os dados
+    //necesssários para preencher todos os componentes
+    async function handleSearch(city){
+        const cityData = await searchCity(city);
+
+        const weather = await getWeatherData(cityData.latitude, cityData.longitude);
+        // faço a chamada igual a anterior mas usando a função que pega os dados de dias anteriores
+        const dailyWeather = await getDailyWeatherData(cityData.latitude, cityData.longitude); 
+
+
+        const formattedWeather = {
+        city: cityData.name,
+        country: cityData.country,
+
+        temperature: weather.current.temperature_2m,
+        feels: weather.current.apparent_temperature,
+        humidity: weather.current.relative_humidity_2m,
+        wind: weather.current.wind_speed_10m,
+        precipitation: weather.current.precipitation,
+
+        condition: weather.current.weather_code,
+
+        date: new Date().toLocaleDateString()
+    };
+
+    //memso funcionamento da anterior
+     const formattedDailyWeather =
+        dailyWeather.daily.time.map((date, index) => ({
+            day: new Date(date).toLocaleDateString('en-US', {
+                weekday: 'short'
+            }),
+
+            condition:
+                dailyWeather.daily.weather_code[index],
+
+            temperature:
+                dailyWeather.daily.temperature_2m_max[index],
+
+            feels:
+                dailyWeather.daily.temperature_2m_min[index]
+        }));
+
+        setWeatherData(formattedWeather); //atualiza o state com os dados formatatos 
+        setDailyWeatherData(formattedDailyWeather); //mesmo funcionamento
+    }
+
   
   const PreviousData = [
     { day: 'Mon', condition: 'sunny',   temperature: 28, feels: 26 },
@@ -92,9 +144,7 @@ const previousHourData = {
     ],
 };
 
- 
-
-  const data = {
+  const mockData = {
     city: 'São Paulo',
     country: 'Brasil',
     date: 'Tuesday, April 20, 2024',
@@ -111,8 +161,13 @@ const previousHourData = {
     <>
 
       <Header></Header>
-      <SearchSection></SearchSection>
-      <MainSection data={data} previousData={PreviousData} previousHourData={previousHourData}/>
+      {/* passamos a função handle anterior para o parametro onSearch para a seção que conterá o container com
+      o input de pesquisa */}
+      <SearchSection onSearch={handleSearch}></SearchSection> 
+
+      {/* Na seção main, aquela que exibe os dados de fato, são passados o resultado atual do state com os dados de clima
+      no parâmetro data (mockData serve como um estado default até o usuario pesquisar uma cidade), bem como os dados de dias e horas anteriores */}
+      <MainSection data={weatherData || mockData} previousData={dailyWeatherData || PreviousData} previousHourData={previousHourData}/>
 
     </>
   )
